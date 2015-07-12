@@ -13,3 +13,15 @@ body {
 footer, input {
 	font-size: large;
 }
+.user{
+	display:block;
+	height: 125px;
+	width:150px;
+	padding:0;
+	margin-left:15%;
+	margin-top:5px;
+}
+iframe {
+	margin-top:75px;
+	width:70vw;
+}

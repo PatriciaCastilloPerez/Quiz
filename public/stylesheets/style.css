@@ -31,3 +31,10 @@ nav span {
 a {
   color: #00B7FF;
 }
+
+
+.user::after {
+	content: "Patricia Castillo";
+	font-weight: 700;
+	width:200px;
+}
