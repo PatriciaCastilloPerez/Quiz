@@ -8,13 +8,26 @@
 </head>
 <body>
 	<table>
-		<% var i; for (i=0; i < quizes.length; i++) { %>        
+		<% console.log(quizes.length)
+			if(quizes.length!==0){
+			var i; for (i=0; i < quizes.length; i++) { %>        
 	    	<tr>
 	    		<td>
 	    			<a href="/quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a>
 	    		</td>
 	    	</tr> 
-		<% } %>
+			<% }
+	} else {
+		%>  
+		<p>No existen preguntas con ese criterio de búsqueda</p>
+
+		<% } 
+	%>
   	</table>
+  	<form method="GET" action="/quizes">
+  		<p>Buscar pregunta</p>
+		<input type="text" name="search" placeholder="Buscar..." />
+		<input type="submit" value="Enviar" />
+	</form>
 </body>
 </html>

@@ -13,9 +13,21 @@ exports.load = function(req, res, next, quizId) {
 
 // GET /quizes
 exports.index = function(req, res) {
-  models.Quiz.findAll().then(function(quizes) {
-    res.render('quizes/index.ejs', { quizes: quizes});
-  }).catch(function(error) { next(error);})
+	if(req.query.search) {
+		var search = '%'+(req.query.search).replace(' ','%')+'%';
+		models.Quiz.findAll({where: ["pregunta like ?", search]}).then(function(quizes) {
+			console.log("quizes: "+quizes.length);
+	    if(quizes.length>0){
+	    	res.render('quizes/index.ejs', { quizes: quizes});
+	    } else {
+	    	res.render('quizes/index.ejs', { quizes: ''});
+	    }
+	  }).catch(function(error) { next(error);})
+	} else {
+		models.Quiz.findAll().then(function(quizes) {
+	    res.render('quizes/index.ejs', { quizes: quizes});
+	  }).catch(function(error) { next(error);})
+	}
 };
 
 // GET /quizes/:id
