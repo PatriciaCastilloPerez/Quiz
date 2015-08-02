@@ -12,29 +12,42 @@
 			if(quizes.length===0){  %>  
 				<p>No existen preguntas con ese criterio de búsqueda</p>
 				<a href="/quizes">Volver</a><br/>
-		<%  } else {
-				var i; for (i=0; i < quizes.length; i++) { %>        
-		    	<tr>
+		<%  } else {%>
+				<thead><tr class="rowhead"><td>Tema</td><td>Pregunta</td><td colspan="2">Acción</td></tr></thead><tbody>
+				<%
+				var i; for (i=0; i < quizes.length; i++) { %>
+		    	<tr style="text-align:left">
+		    		<td>
+		    			<%= quizes[i].tema %>
+		    		</td>
 		    		<td>
 		    			<a href="/quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a>
 		    		</td>
 		    		<td>
 		    			<a href="/quizes/<%= quizes[i].id %>/edit"><button>Editar</button></a>
 		    		</td>
+		    		<td>
+			        	<form method="post" action="quizes/<%= quizes[i].id %>?_method=delete">
+							<button type="submit" onClick="return confirm('Borrar: <%= quizes[i].pregunta %>');">Borrar 
+			        		</button>
+						</form>
+					</td>
 		    	</tr>
 				<% } 
 
 
 			} 
 		%>
-	 <tr><td><a href="/quizes/new"><button type="button">Crear pregunta</button></a></td></tr>
+	 <tr><td colspan="4"><a href="/quizes/new"><button type="button">Crear pregunta</button></a></td></tr>
+	</tbody>
   	</table>
 
-  	<form method="GET" action="/quizes">
+  	<form method="GET" action="/quizes" id="search">
   		<p>Buscar pregunta</p>
 		<input type="text" name="search" placeholder="Buscar..." />
 		<input type="submit" value="Enviar" />
 	</form>
+	<br/>
 
 </body>
 </html>

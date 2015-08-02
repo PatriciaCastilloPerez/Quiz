@@ -5,6 +5,7 @@
 
 body {
   font: 16px Georgia, Serif;
+  
 }
 #page-wrap {
 	margin: 2% auto;
@@ -34,7 +35,20 @@ nav span {
 a {
   color: #00B7FF;
 }
+table{
+	border-collapse: collapse;
+}
+table td{
+	border:1px solid blue;
+	padding:3px;
+}
 
+thead{
+	font-weight: 700
+}
+#search {
+margin:2% auto;float:left;
+}
 
 .user::after {
 	content: "Patricia Castillo";
