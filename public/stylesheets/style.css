@@ -27,6 +27,10 @@ nav span {
 	margin: 0 10px 0 0; 
 }
 
+#ErrorMsgs {
+	color:#f61; font-size:smaller;
+}
+
 a {
   color: #00B7FF;
 }
