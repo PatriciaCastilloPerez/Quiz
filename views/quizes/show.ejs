@@ -7,8 +7,8 @@
 	<!--link rel="stylesheet" type="text/css" href="/stylesheets/style.css" /-->
 </head>
 <body>
-	<form method="GET" action="answer">
-		<p>Pregunta: <%= pregunta %></p>
+	<form method="GET" action="/quizes/<%= quiz.id %>/answer">
+		<p>Pregunta: <%= quiz.pregunta %></p>
 		<input type="text" name="respuesta" placeholder="Responde aquí" />
 		<input type="submit" value="Enviar" />
 	</form>
