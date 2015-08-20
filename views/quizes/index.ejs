@@ -13,7 +13,8 @@
 				<p>No existen preguntas con ese criterio de búsqueda</p>
 				<a href="/quizes">Volver</a><br/>
 		<%  } else {%>
-				<thead><tr class="rowhead"><td>Tema</td><td>Pregunta</td><td colspan="2">Acción</td></tr></thead><tbody>
+				<thead><tr class="rowhead"><td>Tema</td><td>Pregunta</td>
+					<% if(session.user) { %><td colspan="2">Acción</td><%}%></tr></thead><tbody>
 				<%
 				var i; for (i=0; i < quizes.length; i++) { %>
 		    	<tr style="text-align:left">
@@ -23,6 +24,7 @@
 		    		<td>
 		    			<a href="/quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a>
 		    		</td>
+		    		<% if(session.user) { %>
 		    		<td>
 		    			<a href="/quizes/<%= quizes[i].id %>/edit"><button>Editar</button></a>
 		    		</td>
@@ -32,13 +34,14 @@
 			        		</button>
 						</form>
 					</td>
+					<%}%>
 		    	</tr>
 				<% } 
 
 
 			} 
 		%>
-	 <tr><td colspan="4"><a href="/quizes/new"><button type="button">Crear pregunta</button></a></td></tr>
+	 <% if(session.user) { %><tr><td colspan="4"><a href="/quizes/new"><button type="button">Crear pregunta</button></a></td></tr><%}%>
 	</tbody>
   	</table>
 
